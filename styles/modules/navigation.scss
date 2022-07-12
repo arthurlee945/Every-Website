@@ -1,0 +1,182 @@
+.header {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.header-container {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  box-shadow: 0 3px 5px #00000025;
+  .logo {
+    display:flex;
+    flex-direction:row;
+    font-size: 1.25rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin: 0px;
+    transition: 100ms;
+    width:auto;
+    .lower{
+      transition:100ms;
+      @include smallerThanDesktop{
+        display:none;
+      }
+    }
+    .capital {
+      &:nth-of-type(1){
+        margin-left:0;
+      }
+      margin-left:0.5rem;
+    }
+    &:hover,:focus{
+      letter-spacing: 0.1rem;
+    }
+  }
+  &__desktop-nav {
+    > ul {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 0px;
+      .nav-link {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.15rem;
+        font-weight: 500;
+        list-style: none;
+        margin-left: 2rem;
+        &:hover,
+        :focus {
+          &::after {
+            content: "";
+            width: 0%;
+            height: 2px;
+            animation: drawLine 200ms;
+            animation-fill-mode: forwards;
+            background-color: red;
+            @keyframes drawLine {
+              100% {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+      .login-button {
+        list-style: none;
+        font-size: 1.15rem;
+        font-weight: 500;
+        margin-left: 2rem;
+        padding: 0.25rem 1rem;
+        border: 2px solid black;
+        border-radius: 0.75rem;
+        transition: 200ms;
+        &:hover,
+        :focus {
+          background-color: black;
+          color: white;
+        }
+      }
+    }
+    @include smallerThanDesktop{
+      display:none;
+    }
+  }
+  .logoToggle {
+    transform: scaleX(0);
+    overflow: hidden;
+    animation: displayAni 200ms;
+    animation-fill-mode: forwards;
+    @keyframes displayAni {
+      to{width:0px}
+    }
+  }
+  .mobile-nav {
+    display:none;
+    &__button {
+      font-size: 2rem;
+      transition: transform 150ms;
+      cursor: pointer;
+    }
+    &__link-box {
+      position: absolute;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      user-select: none;
+      overflow-y: hidden;
+      width: 100vw;
+      height: calc(100vh - 100%);
+      margin-top: 1.5rem;
+      padding-left: 0px;
+      background-color: white;
+      animation: slideIn 100ms;
+      @keyframes slideIn {
+        from{height:0};
+      }
+      .nav-link {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.5rem;
+        font-weight: 500;
+        list-style: none;
+        &:active,
+        :focus {
+          &::after {
+            content: "";
+            width: 0%;
+            height: 2px;
+            animation: drawLine 200ms;
+            animation-fill-mode: forwards;
+            background-color: red;
+            @keyframes drawLine {
+              100% {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+      .login-button{
+        list-style: none;
+        font-size: 1.5rem;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        text-align:center;
+        width: 80%;
+        border: 2px solid black;
+        border-radius: 0.75rem;
+        transition: 100ms;
+        &:active,
+        :focus {
+          background-color: black;
+          color: white;
+        }
+      }
+    }
+    @include smallerThanDesktop{
+      display:block;
+    }
+  }
+  .drop-down{
+    display:none;
+  }
+  .rollback{
+    animation: rollback 100ms;
+    animation-fill-mode: forwards;
+    @keyframes rollback {
+      to{height:0};
+    }
+  }
+  .rotate-nav{
+    transform: rotate(45deg);
+  }
+}

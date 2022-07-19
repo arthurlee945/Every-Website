@@ -11,7 +11,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 3rem;
+  padding: 1rem 3rem;
   box-shadow: 0 3px 5px #00000025;
   .logo {
     display:flex;
@@ -33,8 +33,12 @@
         margin-left:0;
       }
       margin-left:0.5rem;
+      @include smallerThanDesktop{
+        margin-left:0.2rem;
+      }
     }
-    &:hover,:focus{
+    &:hover,
+    :focus{
       letter-spacing: 0.1rem;
     }
   }
@@ -44,19 +48,23 @@
       flex-direction: row;
       align-items: center;
       margin: 0px;
+      column-gap: 2rem;
       .nav-link {
+        position:relative;
         display: flex;
         flex-direction: column;
+        align-items: center;
         font-size: 1.15rem;
         font-weight: 500;
         list-style: none;
-        margin-left: 2rem;
         &:hover,
         :focus {
           &::after {
+            position:absolute;
             content: "";
             width: 0%;
             height: 2px;
+            bottom:-25%;
             animation: drawLine 200ms;
             animation-fill-mode: forwards;
             background-color: red;
@@ -72,11 +80,12 @@
         list-style: none;
         font-size: 1.15rem;
         font-weight: 500;
-        margin-left: 2rem;
         padding: 0.25rem 1rem;
         border: 2px solid black;
         border-radius: 0.75rem;
         transition: 200ms;
+        user-select: none;
+        cursor:pointer;
         &:hover,
         :focus {
           background-color: black;
